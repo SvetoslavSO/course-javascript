@@ -84,15 +84,6 @@ function upperProps(obj) {
    obj.foo = 2;
    console.log(obj.foo); // 4
  */
-function createProxy(obj) {
-  const handler = {
-    get(obj, prop) {
-      for (prop in obj) {
-        prop = prop ** 2;
-      }
-    },
-  };
-  return new Proxy(obj, handler);
-}
+function createProxy(obj) {}
 
 export { forEach, map, reduce, upperProps, createProxy };
