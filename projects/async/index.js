@@ -55,8 +55,33 @@ function loadTowns() {
    isMatching('Moscow', 'SCO') // true
    isMatching('Moscow', 'Moscov') // false
  */
+
+
+let towns = [];
+
+async function tryToLoad() {
+  try {
+    towns = await loadTowns();
+    loadingBlock.classList.add('hidden');
+    loadingFailedBlock.classList.add('hidden');
+    filterBlock.classList.remove('hidden');
+  } catch (error) {
+    loadingBlock.classList.add('hidden');
+    loadingFailedBlock.classList.remove('hidden');
+  }
+}
+
 function isMatching(full, chunk) {
   return full.toUpperCase().includes(chunk.toUpperCase());
+}
+
+function updating(value) {
+  filterResult.innerHTML = '';
+  for(let town of towns){
+    if(isMatching(town.name, value) && value){
+      filterResult.innerHTML += `${town.name}`;
+    }
+  }
 }
 
 /* Блок с надписью "Загрузка" */
@@ -72,15 +97,21 @@ const filterInput = homeworkContainer.querySelector('#filter-input');
 /* Блок с результатами поиска */
 const filterResult = homeworkContainer.querySelector('#filter-result');
 
-loadingFailedBlock.style.display = 'none';
+loadingFailedBlock.classList.add('hidden');
 
-retryButton.style.display = 'none';
+filterBlock.classList.remove('hidden');
 
-retryButton.addEventListener('click', () => {});
+retryButton.addEventListener('click', () => {
+  tryToLoad();
+});
 
 filterInput.addEventListener('input', function (event) {
   let string = event.target.value;
-  filterResult.innerHTML = '';
+  // в this элемент input
+  updating(string);
 });
+
+tryToLoad();
+
 
 export { loadTowns, isMatching };
