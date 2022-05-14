@@ -56,7 +56,6 @@ function loadTowns() {
    isMatching('Moscow', 'Moscov') // false
  */
 
-
 let towns = [];
 
 async function tryToLoad() {
@@ -77,9 +76,9 @@ function isMatching(full, chunk) {
 
 function updating(value) {
   filterResult.innerHTML = '';
-  for(let town of towns){
-    if(isMatching(town.name, value) && value){
-      filterResult.innerHTML += `${town.name}`;
+  for (const town of towns) {
+    if (isMatching(town.name, value) && value) {
+      filterResult.innerHTML += `${town.name} <br>`;
     }
   }
 }
@@ -106,12 +105,11 @@ retryButton.addEventListener('click', () => {
 });
 
 filterInput.addEventListener('input', function (event) {
-  let string = event.target.value;
+  const string = event.target.value;
   // в this элемент input
   updating(string);
 });
 
 tryToLoad();
-
 
 export { loadTowns, isMatching };
