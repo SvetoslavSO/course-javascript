@@ -29,6 +29,7 @@
    homeworkContainer.appendChild(newDiv);
  */
 
+import { loadAndSortTowns } from './functions';
 import './towns.html';
 
 const homeworkContainer = document.querySelector('#app');
@@ -39,7 +40,9 @@ const homeworkContainer = document.querySelector('#app');
  Массив городов пожно получить отправив асинхронный запрос по адресу
  https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json
  */
-function loadTowns() {}
+function loadTowns() {
+  return loadAndSortTowns();
+}
 
 /*
  Функция должна проверять встречается ли подстрока chunk в строке full
@@ -52,7 +55,9 @@ function loadTowns() {}
    isMatching('Moscow', 'SCO') // true
    isMatching('Moscow', 'Moscov') // false
  */
-function isMatching(full, chunk) {}
+function isMatching(full, chunk) {
+  return full.toUpperCase().includes(chunk.toUpperCase());
+}
 
 /* Блок с надписью "Загрузка" */
 const loadingBlock = homeworkContainer.querySelector('#loading-block');
@@ -67,8 +72,15 @@ const filterInput = homeworkContainer.querySelector('#filter-input');
 /* Блок с результатами поиска */
 const filterResult = homeworkContainer.querySelector('#filter-result');
 
+loadingFailedBlock.style.display = 'none';
+
+retryButton.style.display = 'none';
+
 retryButton.addEventListener('click', () => {});
 
-filterInput.addEventListener('input', function () {});
+filterInput.addEventListener('input', function (event) {
+  let string = event.target.value;
+  filterResult.innerHTML = '';
+});
 
 export { loadTowns, isMatching };
