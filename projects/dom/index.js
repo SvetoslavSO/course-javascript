@@ -120,7 +120,8 @@ function deleteTextNodesRecursive(where) {
   for (const child of [...where.childNodes]) {
     if (child.nodeType !== 1) {
       child.remove();
-    } else deleteTextNodesRecursive(child);
+    }
+    deleteTextNodesRecursive(child);
   }
 }
 
