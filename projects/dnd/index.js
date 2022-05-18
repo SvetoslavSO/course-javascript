@@ -21,7 +21,18 @@ const homeworkContainer = document.querySelector('#app');
 
 document.addEventListener('mousemove', (e) => {});
 
-export function createDiv() {}
+export function createDiv() {
+  const newDiv = document.createElement('div');
+  newDiv.style.position = 'absolute';
+  newDiv.classList.add('draggable-div');
+  newDiv.style.height = Math.random() * 1000 + 'px';
+  newDiv.style.width = Math.random() * 1000 + 'px';
+  newDiv.style.backgroundColor =
+    '#' + (Math.random().toString(16) + '000000').substring(2, 8).toUpperCase();
+  newDiv.style.top = Math.random() * 100 + '%';
+  newDiv.style.left = Math.random() * 100 + '%';
+  return newDiv;
+}
 
 const addDivButton = homeworkContainer.querySelector('#addDiv');
 
