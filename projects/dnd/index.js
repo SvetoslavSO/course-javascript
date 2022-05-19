@@ -23,7 +23,6 @@ document.addEventListener('mousemove', (e) => {});
 
 export function createDiv() {
   const newDiv = document.createElement('div');
-  newDiv.style.position = 'absolute';
   newDiv.classList.add('draggable-div');
   newDiv.style.height = Math.random() * 1000 + 'px';
   newDiv.style.width = Math.random() * 1000 + 'px';
