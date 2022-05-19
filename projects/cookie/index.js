@@ -47,6 +47,9 @@ const listTable = homeworkContainer.querySelector('#list-table tbody');
 
 filterNameInput.addEventListener('input', function () {});
 
-addButton.addEventListener('click', () => {});
+addButton.addEventListener('click', () => {
+  document.cookie = `${addNameInput.value} = ${addValueInput.value}`;
+  listTable.innerHTML = '';
+});
 
 listTable.addEventListener('click', (e) => {});
