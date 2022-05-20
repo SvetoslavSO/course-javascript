@@ -68,16 +68,6 @@ function addCookie() {
        </tr>`;
     }
   }
-  /*const row = listTable.insertRow(listTable.rows.length);
-  const cell1 = row.insertCell(0);
-  cell1.innerText = cookie;
-  const cell2 = row.insertCell(1);
-  cell2.innerText = cookiesArr[cookie];
-  const cell3 = row.insertCell(2);
-  const button = document.createElement('BUTTON');
-  button.classList.add('delete-button');
-  button.textContent = 'удалить';
-  cell3.appendChild(button);*/
 }
 
 filterNameInput.addEventListener('input', function () {
@@ -104,15 +94,23 @@ function getCookie() {
     }, {});
 }
 
+/*
+function getCookie() {
+  cookiesArr = document.cookie
+    .split('; ')
+    .filter(Boolean)
+    .map((cookie) => cookie.match(/^([^=]+)=(.+)/))
+    .reduce((obj, [, name, value]) => {
+      obj[name] = value;
+
+      return obj;
+    }, {});
+}*/
+
 /*function cookieParse(input = '') {
   const cookies = document.cookie.split(';').reduce((prev, current) => {
     const [name, value] = current.split('=');
-    if (input === '') {
       prev[name] = value;
-    } else {
-      if (compare(name, input)) {
-        prev[name] = value;
-      }
     }
     return prev;
   }, {});
