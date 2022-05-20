@@ -74,7 +74,9 @@ function addCookie(cookie, cookiesArr) {
   cell3.appendChild(button);
 }
 
-filterNameInput.addEventListener('input', function () {});
+filterNameInput.addEventListener('input', function () {
+  createCookie(document.cookie, compare, filterNameInput.value);
+});
 
 addButton.addEventListener('click', () => {
   document.cookie = `${addNameInput.value} = ${addValueInput.value}`;
@@ -105,6 +107,6 @@ function cookieParse(input = '') {
 
 listTable.addEventListener('click', (e) => {
   if (e.target.classList.contains('delete-button')) {
-    listTable.removeChild(e.target.ParentNode);
+    listTable.removeChild(e.target.ParentElement);
   }
 });
